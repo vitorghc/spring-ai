@@ -34,7 +34,7 @@ import java.util.Map;
 @Slf4j
 @Service
 @RequiredArgsConstructor
-public class MovieAssistantService {
+public class AIAssistantService {
 
     private final VectorStore vectorStore;
 
@@ -103,7 +103,10 @@ public class MovieAssistantService {
     }
 
     public ActorResponse getReviewActorWithActorResponse(String actor) {
-        PromptTemplate promptTemplate = new PromptTemplate("Forneça a lista de filmes que o {actor}. {format}");
+        PromptTemplate promptTemplate = new PromptTemplate("""
+        Forneça a lista de filmes que o {actor}.
+        {format}
+        """);
 
         BeanOutputParser<ActorResponse> outputParser = new BeanOutputParser<>(ActorResponse.class);
 
